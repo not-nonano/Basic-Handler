@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start.js indes.js --name Discord_Bot",
+    "start": "pm2 start.js index.js --name Discord_Bot",
     "deployGlobal": "node globalCommands.js",
     "deployGuild": "node guildCommands.js"
   },
