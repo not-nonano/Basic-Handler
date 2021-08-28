@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pm2 start.js indes.js --name Discord_Bot",
-    "deploy": "node setSlashCommand.js"
+    "deployGlobal": "node globalCommands.js",
+    "deployGuild": "node guildCommands.js"
   },
   "author": "nonano?",
   "license": "ISC",
