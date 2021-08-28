@@ -15,13 +15,10 @@ const client = new Client({
     restWsBridgeTimeout: 100
 });
 
-client.commands = new Collection();
 client.commands_slash = new Collection();
-client.aliases = new Collection();
-client.guildSettings = new Collection();
 
 
-["command", "command-slash", "event", "function"].forEach(handler => {
+["command-slash", "event", "function"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 });
 

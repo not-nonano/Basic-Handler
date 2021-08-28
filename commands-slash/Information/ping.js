@@ -1,10 +1,14 @@
 const { Interaction } = require('discord.js')
 
 module.exports = {
-    name: "test",
+    data: {
+        name: 'ping',
+        description: 'Replies pong!'
+    },
+    name: "ping",
     category: "Information",
     description: "",
-    perms: false,
+    perms: [],
     showHelp: false,
     run:
         /**
@@ -12,7 +16,7 @@ module.exports = {
          * @param {Interaction} interaction 
          */
         async (interaction) => {
-            await interaction.reply({ content: `message recieved and replied`, ephemeral: false })
+            await interaction.reply({ content: `pong!`, ephemeral: false })
         }
 }
 

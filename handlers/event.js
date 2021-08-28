@@ -6,15 +6,6 @@ const allevents = [];
 const stringlength2 = 69;
 module.exports = async (client) => {
     try {
-        try {
-            console.log("\n")
-            console.log(`     ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓`.bold.yellow)
-            console.log(`     ┃ `.bold.yellow + " ".repeat(-1 + stringlength2 - ` ┃ `.length) + "┃".bold.yellow)
-            console.log(`     ┃ `.bold.yellow + `Loading Events...`.bold.yellow + " ".repeat(-1 + stringlength2 - ` ┃ `.length - `Loading Events...`.length) + "┃".bold.yellow)
-            console.log(`     ┃ `.bold.yellow + " ".repeat(-1 + stringlength2 - ` ┃ `.length) + "┃".bold.yellow)
-            console.log(`     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛`.bold.yellow)
-        } catch { /* */ }
-
         const load_dir = (dir) => {
             const event_files = readdirSync(`./events/${dir}`).filter((file) => file.endsWith(".js"));
             for (const file of event_files) {
