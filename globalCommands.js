@@ -18,31 +18,30 @@
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+const { SlashCommandBuilder } = require('@discordjs/builders')
+require('dotenv').config()
+const { readdirSync } = require('fs');
 
-const ping = {
-    name: 'ping',
-    description: 'replies pong'
-}
-
-const prefix = {
-    name: 'prefix',
-    description: 'Set server prefix.',
-    type: 3,
-    required: true
-}
-
-let commands = [ping, prefix]
+const commands = [];
+readdirSync("./commands-slash/").forEach((dir) => {
+    const commandFiles = readdirSync(`./commands-slash/${dir}/`).filter((file) => file.endsWith(".js"));
+    for (const file of commandFiles) {
+        const command = require(`./commands-slash/${dir}/${file}`);
+        commands.push(command.slash);
+    }
+})
 
 
-const rest = new REST({ version: '9' }).setToken(TOKEN);
+const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 
 (async () => {
     try {
         console.log('Started refreshing application (/) commands.');
-
         await rest.put(
-            Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
-            { body: commands },
+            Routes.applicationCommands(process.env.CLIENT_ID),
+            {
+                body: [commands]
+            },
         );
 
         console.log('Successfully reloaded application (/) commands.');
@@ -50,4 +49,3 @@ const rest = new REST({ version: '9' }).setToken(TOKEN);
         console.error(error);
     }
 })();
-
