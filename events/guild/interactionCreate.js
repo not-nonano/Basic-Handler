@@ -35,9 +35,9 @@ module.exports = {
 
             const context_menu = interaction.client.context_menu.get(interaction.commandName)
 
-            if (!interaction.member.permissions.has(command.perms)) {
+            if (!interaction.member.permissions.has(context_menu.perms)) {
                 let neededPerms
-                command.perms.forEach(perm => {
+                context_menu.perms.forEach(perm => {
                     neededPerms += `\`${perm}\` `
                 })
                 return interaction.reply({ content: `You don't have permission to run this command\nYou need ${neededPerms}`, ephemeral: true })

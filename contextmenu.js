@@ -25,7 +25,7 @@ const contextMenus = [];
 const contextMenuFiles = readdirSync(`./contex-menu/`).filter((file) => file.endsWith(".js"));
 for (const file of contextMenuFiles) {
     const contextMenu = require(`./context-menu/${file}`);
-    contextMenus.push(contextMenu.slash);
+    contextMenus.push(contextMenu.data);
 }
 
 
@@ -37,7 +37,7 @@ const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
         await rest.put(
             Routes.applicationGuildCommands(process.env.CLIENT_ID, 'GUILD_ID'),
             {
-                body: [contextMenu]
+                body: contextMenu
             },
         );
 

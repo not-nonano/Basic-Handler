@@ -26,7 +26,7 @@ readdirSync("./commands-slash/").forEach((dir) => {
     const commandFiles = readdirSync(`./commands-slash/${dir}/`).filter((file) => file.endsWith(".js"));
     for (const file of commandFiles) {
         const command = require(`./commands-slash/${dir}/${file}`);
-        commands.push(command.slash);
+        commands.push(command.data);
     }
 })
 

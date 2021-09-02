@@ -1,4 +1,4 @@
-const { CommandInteraction } = require('discord.js')
+const { ContextMenuInteraction } = require('discord.js')
 
 module.exports = {
     data: {
@@ -10,10 +10,10 @@ module.exports = {
     run:
         /**
          * 
-         * @param {CommandInteraction} interaction 
+         * @param {ContextMenuInteraction} interaction 
          */
         async (interaction) => {
-            await interaction.reply({ content: `pong!`, ephemeral: false })
+            await interaction.reply({ content: `pong! ${interaction.client.users.cache.get(interaction.targetId)}`, ephemeral: false, allowedMentions: { users: [] } })
         }
 }
 
