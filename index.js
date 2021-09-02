@@ -16,7 +16,7 @@ const client = new Client({
 });
 
 client.commands_slash = new Collection();
-
+client.context_menu = new Collection();
 
 ["command-slash", "event", "function"].forEach(handler => {
     require(`./handlers/${handler}`)(client);

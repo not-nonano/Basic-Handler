@@ -30,5 +30,25 @@ module.exports = {
             }
 
         }
+        if (interaction.isContextMenu()) {
+            if (!interaction.client.context_menu.has(interaction.commandName)) return;
+
+            const context_menu = interaction.client.context_menu.get(interaction.commandName)
+
+            if (!interaction.member.permissions.has(command.perms)) {
+                let neededPerms
+                command.perms.forEach(perm => {
+                    neededPerms += `\`${perm}\` `
+                })
+                return interaction.reply({ content: `You don't have permission to run this command\nYou need ${neededPerms}`, ephemeral: true })
+            }
+
+            try {
+                await context_menu.run(interaction)
+            } catch (error) {
+                console.error(error);
+                await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+            }
+        }
     }
 }

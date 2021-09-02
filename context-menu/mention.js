@@ -3,13 +3,10 @@ const { CommandInteraction } = require('discord.js')
 module.exports = {
     data: {
         name: 'ping',
-        description: 'Replies pong!'
+        type: 3
     },
     name: "ping",
-    category: "Information",
-    description: "",
     perms: [],
-    showHelp: false,
     run:
         /**
          * 
