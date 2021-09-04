@@ -30,6 +30,11 @@ readdirSync("./commands-slash/").forEach((dir) => {
     }
 })
 
+const contextMenuFiles = readdirSync(`./contex-menu/`).filter((file) => file.endsWith(".js"));
+for (const file of contextMenuFiles) {
+    const contextMenu = require(`./context-menu/${file}`);
+    commands.push(contextMenu.data);
+}
 
 const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
 

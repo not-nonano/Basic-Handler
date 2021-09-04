@@ -13,7 +13,4 @@ node guildCommands
 node globalCommands
 ```
 
-## Set Context Menus
-```
-node contextmenu
-```
+
